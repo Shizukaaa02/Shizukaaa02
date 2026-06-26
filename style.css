@@ -70,17 +70,17 @@ body::after {
 }
 
 .bg-summer {
-  background-image: url("summer.JPG");
+  background-image: url("summer.jpg");
   animation-delay: 5s;
 }
 
 .bg-autumn {
-  background-image: url("autumn.JPG");
+  background-image: url("autumn.jpg");
   animation-delay: 10s;
 }
 
 .bg-winter {
-  background-image: url("winter.JPG");
+  background-image: url("winter.jpg");
   animation-delay: 15s;
 }
 
