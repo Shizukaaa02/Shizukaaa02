@@ -190,17 +190,17 @@ body::after {
 }
 
 .slide-summer {
-  background-image: url("summer.JPG");
+  background-image: url("summer.jpg");
   animation-delay: 5s;
 }
 
 .slide-autumn {
-  background-image: url("autumn.JPG");
+  background-image: url("autumn.jpg");
   animation-delay: 10s;
 }
 
 .slide-winter {
-  background-image: url("winter.JPG");
+  background-image: url("winter.jpg");
   animation-delay: 15s;
 }
 
