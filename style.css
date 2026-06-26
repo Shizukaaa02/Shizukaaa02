@@ -16,6 +16,7 @@ body {
   overflow: hidden;
 }
 
+/* 外部模糊油画背景 */
 body::before {
   content: "";
   position: fixed;
@@ -29,6 +30,7 @@ body::before {
   z-index: -2;
 }
 
+/* 外部暖色光晕 */
 body::after {
   content: "";
   position: fixed;
@@ -40,6 +42,7 @@ body::after {
   z-index: -1;
 }
 
+/* 整个首页舞台 */
 .gallery-stage {
   min-height: 100vh;
   display: flex;
@@ -49,9 +52,10 @@ body::after {
   position: relative;
 }
 
+/* 悬浮的艺术展卡片，横图比例 */
 .gallery-card {
-  width: min(82vw, 860px);
-  height: min(82vh, 680px);
+  width: min(88vw, 1120px);
+  aspect-ratio: 16 / 9;
   background: rgba(255, 249, 238, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 34px;
@@ -64,6 +68,7 @@ body::after {
   transform: translateY(-8px);
 }
 
+/* 卡片下方投影，让它看起来悬浮 */
 .gallery-card::after {
   content: "";
   position: absolute;
@@ -76,6 +81,7 @@ body::after {
   z-index: -1;
 }
 
+/* 真正显示图片和文字的屏幕 */
 .art-screen {
   position: relative;
   width: 100%;
@@ -84,7 +90,7 @@ body::after {
   overflow: hidden;
   background-image: url("hero2.JPG");
   background-size: cover;
-  background-position: center;
+  background-position: center 52%;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.42),
     inset 0 0 42px rgba(90, 62, 38, 0.18);
@@ -93,6 +99,7 @@ body::after {
   justify-content: center;
 }
 
+/* 轻轻的取景框线 */
 .art-screen::before {
   content: "";
   position: absolute;
@@ -103,6 +110,7 @@ body::after {
   z-index: 2;
 }
 
+/* 屏幕内柔光遮罩 */
 .art-screen::after {
   content: "";
   position: absolute;
@@ -113,6 +121,7 @@ body::after {
   z-index: 1;
 }
 
+/* 中央标题区域 */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -164,6 +173,7 @@ h1 {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* 左下角 gallery 标签 */
 .gallery-label {
   position: absolute;
   left: 34px;
@@ -176,6 +186,7 @@ h1 {
   color: rgba(255, 255, 255, 0.74);
 }
 
+/* 右下角取景器参数 */
 .viewfinder-info {
   position: absolute;
   right: 34px;
@@ -188,4 +199,57 @@ h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.72);
+}
+
+/* 手机屏幕适配 */
+@media (max-width: 700px) {
+  .gallery-stage {
+    padding: 20px;
+  }
+
+  .gallery-card {
+    width: 94vw;
+    aspect-ratio: 4 / 5;
+    padding: 16px;
+    border-radius: 26px;
+  }
+
+  .art-screen {
+    border-radius: 18px;
+    background-position: center 52%;
+  }
+
+  .art-screen::before {
+    inset: 12px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .small-title {
+    font-size: 10px;
+    line-height: 1.8;
+  }
+
+  .gallery-label,
+  .viewfinder-info {
+    font-size: 9px;
+    bottom: 20px;
+  }
+
+  .gallery-label {
+    left: 24px;
+  }
+
+  .viewfinder-info {
+    right: 24px;
+    gap: 10px;
+  }
 }
