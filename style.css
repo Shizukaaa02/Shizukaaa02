@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #fff;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(1px);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  padding: 40px;
+  max-width: 900px;
+}
+
+.small-title {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 110px);
+  font-weight: normal;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.enter-button {
+  display: inline-block;
+  padding: 13px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.enter-button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+}
