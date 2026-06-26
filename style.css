@@ -7,125 +7,185 @@
 body {
   min-height: 100vh;
   font-family: Georgia, "Times New Roman", serif;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
   background:
-    radial-gradient(circle at top left, rgba(255, 245, 230, 0.22), transparent 34%),
-    linear-gradient(135deg, #171515, #2a2522 45%, #111);
+    linear-gradient(rgba(255, 247, 232, 0.18), rgba(255, 247, 232, 0.18)),
+    url("hero2.JPG");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
-.camera-stage {
+body::before {
+  content: "";
+  position: fixed;
+  inset: -40px;
+  background-image: url("hero2.JPG");
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) saturate(1.05) brightness(1.08);
+  transform: scale(1.08);
+  opacity: 0.72;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 225, 190, 0.38), transparent 32%),
+    radial-gradient(circle at 82% 78%, rgba(255, 185, 175, 0.28), transparent 30%),
+    rgba(255, 246, 230, 0.28);
+  z-index: -1;
+}
+
+.gallery-stage {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 42px;
+  position: relative;
 }
 
-.camera-body {
-  width: min(92vw, 1180px);
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(145deg, #1a1a1a, #050505);
+.gallery-card {
+  width: min(82vw, 860px);
+  height: min(82vh, 680px);
+  background: rgba(255, 249, 238, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 34px;
-  padding: 34px 42px;
+  padding: 24px;
   box-shadow:
-    0 40px 90px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.8);
+    0 34px 90px rgba(129, 94, 63, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
   position: relative;
+  transform: translateY(-8px);
 }
 
-.camera-top,
-.camera-bottom {
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -38px;
   height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.55);
-  text-transform: uppercase;
+  background: radial-gradient(ellipse at center, rgba(112, 75, 48, 0.34), transparent 70%);
+  filter: blur(12px);
+  z-index: -1;
 }
 
-.camera-screen {
+.art-screen {
   position: relative;
-  height: calc(100% - 76px);
-  border-radius: 18px;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
   overflow: hidden;
   background-image: url("hero2.JPG");
   background-size: cover;
   background-position: center;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    inset 0 0 42px rgba(90, 62, 38, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow:
-    inset 0 0 0 2px rgba(255, 255, 255, 0.12),
-    inset 0 0 35px rgba(0, 0, 0, 0.45);
 }
 
-.camera-screen::before {
+.art-screen::before {
   content: "";
   position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 12px;
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
   pointer-events: none;
   z-index: 2;
 }
 
-.overlay {
+.art-screen::after {
+  content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.25)),
-    rgba(255, 248, 238, 0.05);
+    linear-gradient(to bottom, rgba(255, 244, 225, 0.04), rgba(80, 48, 30, 0.12)),
+    rgba(255, 242, 225, 0.04);
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
   z-index: 3;
   text-align: center;
-  padding: 40px;
-  max-width: 900px;
-  opacity: 0.88;
+  padding: 36px;
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 3px 24px rgba(80, 52, 34, 0.42);
 }
 
 .small-title {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   opacity: 0.78;
 }
 
 h1 {
-  font-size: clamp(44px, 7vw, 96px);
+  font-size: clamp(46px, 7vw, 96px);
   font-weight: normal;
   letter-spacing: -2px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .subtitle {
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: 2px;
-  margin-bottom: 36px;
+  margin-bottom: 34px;
   opacity: 0.82;
 }
 
 .enter-button {
   display: inline-block;
-  padding: 13px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 12px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.76);
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
   transition: 0.3s;
 }
 
 .enter-button:hover {
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.gallery-label {
+  position: absolute;
+  left: 34px;
+  bottom: 28px;
+  z-index: 3;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.viewfinder-info {
+  position: absolute;
+  right: 34px;
+  bottom: 28px;
+  z-index: 3;
+  display: flex;
+  gap: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
 }
