@@ -10,7 +10,7 @@ body {
   color: rgba(255, 255, 255, 0.9);
   background:
     linear-gradient(rgba(255, 247, 232, 0.18), rgba(255, 247, 232, 0.18)),
-    url("hero2.JPG");
+    url("spring.JPG");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -21,7 +21,7 @@ body::before {
   content: "";
   position: fixed;
   inset: -40px;
-  background-image: url("hero2.JPG");
+  background-image: url("spring.JPG");
   background-size: cover;
   background-position: center;
   filter: blur(28px) saturate(1.05) brightness(1.08);
@@ -88,7 +88,7 @@ body::after {
   height: 100%;
   border-radius: 24px;
   overflow: hidden;
-  background-image: url("hero2.JPG");
+  background-image: url("spring.JPG");
   background-size: cover;
   background-position: center 52%;
   box-shadow:
