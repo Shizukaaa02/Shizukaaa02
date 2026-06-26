@@ -46,7 +46,7 @@ body::after {
   z-index: 0;
   filter: blur(34px) saturate(1.12) brightness(1.08) contrast(0.95);
   transform: scale(1.1);
-  animation: dreamyBackground 20s infinite;
+  animation: dreamyBackground 40s infinite;
 }
 
 .bg-slide::after {
@@ -67,17 +67,17 @@ body::after {
 
 .bg-summer {
   background-image: url("summer.jpg");
-  animation-delay: 5s;
+  animation-delay: 10s;
 }
 
 .bg-autumn {
   background-image: url("autumn.jpg");
-  animation-delay: 10s;
+  animation-delay: 20s;
 }
 
 .bg-winter {
   background-image: url("winter.JPG");
-  animation-delay: 15s;
+  animation-delay: 30s;
 }
 
 @keyframes dreamyBackground {
@@ -197,70 +197,233 @@ body::after {
   background-position: center 52%;
   opacity: 0;
   z-index: 0;
-  filter: saturate(1.08) brightness(1.04) contrast(0.96);
+  transform-origin: 100% 100%;
   transform: scale(1.04);
-  animation: dreamySeason 20s infinite;
+  filter: saturate(1.08) brightness(1.04) contrast(0.96);
+  backface-visibility: hidden;
 }
 
+/* 给每一张图加一点油画柔光 */
 .slide::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 30% 22%, rgba(255, 245, 220, 0.18), transparent 34%),
-    radial-gradient(circle at 70% 78%, rgba(255, 205, 190, 0.14), transparent 36%);
+    radial-gradient(circle at 28% 20%, rgba(255, 245, 220, 0.18), transparent 34%),
+    radial-gradient(circle at 76% 78%, rgba(255, 210, 195, 0.14), transparent 36%),
+    linear-gradient(to bottom, rgba(255, 248, 235, 0.04), rgba(80, 48, 30, 0.08));
   mix-blend-mode: soft-light;
+}
+
+/* 贴纸被揭开时的高光边缘 */
+.slide::before {
+  content: "";
+  position: absolute;
+  right: -6%;
+  bottom: -6%;
+  width: 42%;
+  height: 42%;
+  background:
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.75), transparent 46%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 62%);
+  opacity: 0;
+  filter: blur(4px);
+  z-index: 2;
 }
 
 .slide-spring {
   background-image: url("spring.JPG");
-  animation-delay: 0s;
+  animation: peelSpring 40s infinite ease-in-out;
 }
 
 .slide-summer {
   background-image: url("summer.jpg");
-  animation-delay: 5s;
+  animation: peelSummer 40s infinite ease-in-out;
 }
 
 .slide-autumn {
   background-image: url("autumn.jpg");
-  animation-delay: 10s;
+  animation: peelAutumn 40s infinite ease-in-out;
 }
 
 .slide-winter {
-  background-image: url("winter.JPG");
-  animation-delay: 15s;
+  background-image: url("winter.jpg");
+  animation: peelWinter 40s infinite ease-in-out;
 }
 
-@keyframes dreamySeason {
+/* 春：一开始显示，然后像贴纸一样剥开，露出夏 */
+@keyframes peelSpring {
+  0% {
+    opacity: 1;
+    z-index: 4;
+    transform: scale(1.04) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: blur(0px) saturate(1.08) brightness(1.04) contrast(0.96);
+  }
+
+  18% {
+    opacity: 1;
+    z-index: 4;
+    transform: scale(1.045) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: blur(0px) saturate(1.08) brightness(1.04) contrast(0.96);
+  }
+
+  26% {
+    opacity: 0;
+    z-index: 4;
+    transform: scale(1.06) translate(18%, -10%) rotateZ(5deg) rotateY(-68deg);
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    filter: blur(3px) saturate(1.18) brightness(1.12) contrast(0.9);
+  }
+
+  27% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  88% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  90% {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1.04) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  100% {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1.04) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* 夏：在春剥离时先在下面出现，然后自己再剥开，露出秋 */
+@keyframes peelSummer {
   0% {
     opacity: 0;
-    filter: blur(8px) saturate(1.16) brightness(1.08) contrast(0.92);
-    transform: scale(1.08);
+    z-index: 0;
   }
 
-  10% {
-    opacity: 1;
-    filter: blur(0px) saturate(1.08) brightness(1.04) contrast(0.96);
-    transform: scale(1.04);
-  }
-
-  25% {
-    opacity: 1;
-    filter: blur(0px) saturate(1.08) brightness(1.04) contrast(0.96);
-    transform: scale(1.045);
-  }
-
-  35% {
+  17% {
     opacity: 0;
-    filter: blur(10px) saturate(1.2) brightness(1.1) contrast(0.9);
-    transform: scale(1.1);
+    z-index: 0;
+  }
+
+  18% {
+    opacity: 1;
+    z-index: 3;
+    transform: scale(1.04) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  43% {
+    opacity: 1;
+    z-index: 3;
+    transform: scale(1.045) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  51% {
+    opacity: 0;
+    z-index: 3;
+    transform: scale(1.06) translate(18%, -10%) rotateZ(5deg) rotateY(-68deg);
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    filter: blur(3px) saturate(1.18) brightness(1.12) contrast(0.9);
+  }
+
+  52% {
+    opacity: 0;
+    z-index: 0;
   }
 
   100% {
     opacity: 0;
-    filter: blur(10px) saturate(1.2) brightness(1.1) contrast(0.9);
-    transform: scale(1.1);
+    z-index: 0;
+  }
+}
+
+/* 秋：露出后显示，再剥开，露出冬 */
+@keyframes peelAutumn {
+  0% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  42% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  43% {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1.04) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  68% {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1.045) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  76% {
+    opacity: 0;
+    z-index: 2;
+    transform: scale(1.06) translate(18%, -10%) rotateZ(5deg) rotateY(-68deg);
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    filter: blur(3px) saturate(1.18) brightness(1.12) contrast(0.9);
+  }
+
+  77% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: 0;
+  }
+}
+
+/* 冬：最后显示，然后剥开，重新露出春 */
+@keyframes peelWinter {
+  0% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  67% {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  68% {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1.04) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  88% {
+    opacity: 1;
+    z-index: 4;
+    transform: scale(1.045) rotateZ(0deg) rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  100% {
+    opacity: 0;
+    z-index: 4;
+    transform: scale(1.06) translate(18%, -10%) rotateZ(5deg) rotateY(-68deg);
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    filter: blur(3px) saturate(1.18) brightness(1.12) contrast(0.9);
   }
 }
 
