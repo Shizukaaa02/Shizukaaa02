@@ -80,7 +80,7 @@ body::after {
 }
 
 .bg-winter {
-  background-image: url("winter.jpg");
+  background-image: url("winter.JPG");
   animation-delay: 15s;
 }
 
@@ -200,7 +200,7 @@ body::after {
 }
 
 .slide-winter {
-  background-image: url("winter.jpg");
+  background-image: url("winter.JPG");
   animation-delay: 15s;
 }
 
